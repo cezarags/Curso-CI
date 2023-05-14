@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-LABEL maintainer="Cezar Augusto"
+LABEL maintainer="Cezar Augusto..."
 
 EXPOSE 8000
 
