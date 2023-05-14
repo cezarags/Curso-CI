@@ -20,13 +20,10 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.19
-        super_secret: ${{secrets.CLIENT_TEST}}
     
     - name: Run Commands with a Secret
-      env:
+      with:
           SECRET_VALUE: ${{ secrets.CLIENT_TEST }}
-      run: |
-          echo "Hello World"
           echo "This is a secret value: $SECRET_VALUE"
           
     - name: build-BD
