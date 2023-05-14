@@ -23,7 +23,6 @@ jobs:
     
     - name: Run Commands with a Secret
       run:  echo  "${{ secrets.CLIENT_TEST }}"
-    - shell: bash
       env:
           SECRET_VALUE: "${{ secrets.CLIENT_TEST }}"
     
