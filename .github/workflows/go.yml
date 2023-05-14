@@ -13,6 +13,12 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    env:
+     HOST: localhost
+     PORT: 5432
+     USER: root
+     PASSWORD: root
+     DBNAME: root
     steps:
     - uses: actions/checkout@v3
 
@@ -20,7 +26,15 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.19
-      
+    
+    - name: Run Commands with a Secret
+      run:  echo  "${{ secrets.CLIENT_TEST }}"
+      env:
+          SECRET_VALUE: "${{ secrets.CLIENT_TEST }}"
+    
+    - name: Print Secret Value here
+      run: echo $SECRET_VALUE
+          
     - name: build-BD
       run: docker-compose build
       
@@ -29,6 +43,7 @@ jobs:
 
     - name: Test
       run: go test -v main_test.go
+      
 
   build:
     needs: test
