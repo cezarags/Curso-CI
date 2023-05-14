@@ -22,9 +22,12 @@ jobs:
         go-version: 1.19
     
     - name: Run Commands with a Secret
-      with:
+      run:  echo  "${{ secrets.CLIENT_TEST }}"
+      env:
           SECRET_VALUE: ${{ secrets.CLIENT_TEST }}
-          echo "This is a secret value: $SECRET_VALUE"
+    
+    - name: Print Secret Value
+      run: echo $SECRET_VALUE
           
     - name: build-BD
       run: docker-compose build
