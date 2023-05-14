@@ -22,9 +22,10 @@ jobs:
         go-version: 1.19
     
     - name: Run Commands with a Secret
-      run:  echo  "${{ secrets.CLIENT_TEST2 }}"
+      run:  echo  "${{ secrets.CLIENT_TEST }}"
+    - shell: bash
       env:
-          SECRET_VALUE: ${{ secrets.CLIENT_TEST2 }}
+          SECRET_VALUE: "${{ secrets.CLIENT_TEST }}"
     
     - name: Print Secret Value
       run: echo $SECRET_VALUE
